@@ -1,0 +1,19 @@
+.search{
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    width: 50vw;
+    height: 5vh;
+    margin-top: 50px;
+}
+
+input{
+    width: 80%;
+    height: 80%;
+    text-align: center;
+}
+
+button{
+    width: 20%;
+    height: 90%;
+}
