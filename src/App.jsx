@@ -1,26 +1,37 @@
+// Style
+import './App.css';
+
+// Axios
 import axios from 'axios';
+
+// React
 import { useEffect, useState } from 'react'
+
+// Components
+import Header from './components/header/Header';
 
 function App() {
 
-  const user = 'GeracNeto'
+  const [information, setInformation] = useState({});
+  const [user, setUser] = useState();
 
-  const [repositories, setRepositories] = useState([]);
+  const getUserData = (user) => {
+    
+    axios.get(`https://api.github.com/users/${user}`).then(response => {
+      setInformation(response.data);
+      console.log(response.data);
+    }).catch(error => console.log('Erro:', error))
+  }
 
-  useEffect(() => {
-    axios.get(`https://api.github.com/users/${user}/repos`).then(response => {
-      setRepositories(response.data);
-    });
-  }, []);
 
   return (
     <div className="App">
-      <ul>
-        {repositories.map(repo => (
-          <li>{repo.full_name}</li>
-        ))}
-      </ul>
- 
+      <input type="text" onChange={e => setUser(e.target.value)}/>
+      {console.log(user)}
+
+      <button onClick={() => getUserData(user)}>Clique aqui</button>
+      <p>User Name: {information.login === user ? information.name : 'error'}</p>
+
     </div>
   )
 }
