@@ -51,11 +51,11 @@ function App() {
       <h2>Repositórios</h2>
 
       {repository.map(repo => (
-        <Repository repoName={repo.name}/>
+        <Repository repoName={repo.name} repoLink={repo.html_url} repoLanguages={repo.languages_url}/>
       ))}
 
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
