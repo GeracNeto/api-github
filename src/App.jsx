@@ -2,6 +2,7 @@
 import './App.css';
 
 // Axios
+// Axios é um cliente HTTP baseado em Promises para fazer requisições.
 import axios from 'axios';
 
 // React
@@ -9,14 +10,18 @@ import { useEffect, useState } from 'react'
 
 // Components
 import Header from './components/header/Header';
+import Search from './components/search/Search';
 
 function App() {
 
-  const [information, setInformation] = useState({});
-  const [user, setUser] = useState();
+  const [information, setInformation] = useState({}); // Variável que armazena as informações do usuário por meio do get na API.
 
   const getUserData = (user) => {
-    
+    /*
+    Essa função usa o método get para fazer a requisição
+    dos dados dos usuários no github. Recebe o nome do usuário 
+    pelo componente Search e busca os dados armazenando-os na varoável "information"
+    */    
     axios.get(`https://api.github.com/users/${user}`).then(response => {
       setInformation(response.data);
       console.log(response.data);
@@ -26,11 +31,9 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" onChange={e => setUser(e.target.value)}/>
-      {console.log(user)}
-
-      <button onClick={() => getUserData(user)}>Clique aqui</button>
-      <p>User Name: {information.login === user ? information.name : 'error'}</p>
+      <Header avatar={information.avatar_url} user={information.login} userName={information.name} github={information.html_url}/>
+      
+      <Search getUserData={getUserData}/>
 
     </div>
   )
