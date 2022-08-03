@@ -11,10 +11,12 @@ import { useEffect, useState } from 'react'
 // Components
 import Header from './components/header/Header';
 import Search from './components/search/Search';
+import Repository from './components/repository/Repository';
 
 function App() {
 
   const [information, setInformation] = useState({}); // Variável que armazena as informações do usuário por meio do get na API.
+  const [repository, setRepository] = useState([]); // Variável que armazena os repositórios do usuário pesquisado
 
   const getUserData = (user) => {
     /*
@@ -28,12 +30,29 @@ function App() {
     }).catch(error => console.log('Erro:', error))
   }
 
+  useEffect(() => {
+    /*
+    Semmpre que a variável information for atualizada
+    é feito get na api do github para retornar os repositórios do usuário pesquisado.
+    Os repositórios são armazenados na variável "repository"
+    */
+    axios.get(`https://api.github.com/users/${information.login}/repos`).then(response => {
+      setRepository(response.data);
+      console.log(response.data);
+    }).catch(error => console.log('Erro repositorio:', error));
+  }, [information]);
 
   return (
     <div className="App">
       <Header avatar={information.avatar_url} user={information.login} userName={information.name} github={information.html_url}/>
       
       <Search getUserData={getUserData}/>
+
+      <h2>Repositórios</h2>
+
+      {repository.map(repo => (
+        <Repository repoName={repo.name}/>
+      ))}
 
     </div>
   )
