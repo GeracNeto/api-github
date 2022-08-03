@@ -14,7 +14,7 @@ ul{
     list-style: none;
     border: 1px solid;
     line-height: 3.5;
-    width: 30%;
+    max-width: max-content;
 }
 
 img{
