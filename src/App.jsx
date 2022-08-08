@@ -1,5 +1,6 @@
 // Style
 import './App.css';
+import './styles/global.css';
 
 // Axios
 // Axios é um cliente HTTP baseado em Promises para fazer requisições.
@@ -24,11 +25,14 @@ function App() {
     dos dados dos usuários no github. Recebe o nome do usuário 
     pelo componente Search e busca os dados armazenando-os na varoável "information"
     */    
-    axios.get(`https://api.github.com/users/${user}`).then(response => {
+    axios.get(`https://api.github.com/users/${user}`, {
+      headers: {Authorization: ''}
+    }).then(response => {
       setInformation(response.data);
       console.log(response.data);
     }).catch(error => console.log('Erro:', error))
   }
+
 
   useEffect(() => {
     /*
@@ -36,11 +40,15 @@ function App() {
     é feito get na api do github para retornar os repositórios do usuário pesquisado.
     Os repositórios são armazenados na variável "repository"
     */
-    axios.get(`https://api.github.com/users/${information.login}/repos`).then(response => {
+   
+    axios.get(`https://api.github.com/users/${information.login}/repos`,{
+      headers: {Authorization: ''}
+    }).then(response => {
       setRepository(response.data);
       console.log(response.data);
     }).catch(error => console.log('Erro repositorio:', error));
   }, [information]);
+  
 
   return (
     <div className="App">
@@ -48,12 +56,11 @@ function App() {
       
       <Search getUserData={getUserData}/>
 
-      <h2>Repositórios</h2>
-
-      {repository.map(repo => (
-        <Repository repoName={repo.name} repoLink={repo.html_url} repoLanguages={repo.languages_url}/>
-      ))}
-
+      <dir className="repos">
+        {repository.map(repo => (
+          <Repository key={repo.id} repoName={repo.name} repoLink={repo.html_url} repoLanguages={repo.languages_url} repoObs={repo.description}/>
+        ))}
+      </dir>
     </div>
   );
 };
