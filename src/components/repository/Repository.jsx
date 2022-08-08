@@ -4,24 +4,33 @@ import axios from "axios";
 // React
 import { useEffect, useState } from "react";
 
-const Repository = ({ repoName, repoLink, repoLanguages }) => {
+// Styles
+import './Repository.css';
 
-        const [languages, setLanguages] = useState({});
+const Repository = ({ repoName, repoLink, repoLanguages, repoObs, key }) => {
 
+    const [languages, setLanguages] = useState({});
 
+    let testes = Object.keys(languages);
+    console.log(Object.keys(languages));
+    
     useEffect(() => {
 
-        axios.get(repoLanguages).then(response => {
+        axios.get(repoLanguages, {
+            headers: {Authorization: ''}
+          }).then(response => {
             setLanguages(response.data);
             console.log(response.data);
         }).catch(error => console.log('Error get language: ', error));
     }, []);
 
     return (
-        <div>
-            <p><a href={repoLink} target="_blank">{repoName}</a></p>
-            {console.log(Object.keys(languages))}
-
+        <div className="repository">
+            <h2><a href={repoLink} target="_blank">{repoName}</a></h2>
+            <p>{repoObs}</p>
+            <ul>
+                {testes.map(teste => <li key={key}>{teste}</li>)}
+            </ul>
         </div>
       );
 };
