@@ -5,7 +5,6 @@ Componente que preenche as informações do cabeçalho: foto do perfil, login do
 // Style
 import './Header.css';
 
-
 const Header = ({ avatar, user, userName, github }) => {
   return (
     <div className="master-container">
