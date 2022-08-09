@@ -3,21 +3,28 @@ Componente que preenche as informações do cabeçalho: foto do perfil, login do
 */
 
 // Style
+import Search from '../search/Search';
 import './Header.css';
 
-const Header = ({ avatar, user, userName, github }) => {
+// Image
+
+
+const Header = ({ avatar, user, userName, github, getUserData}) => {
+
   return (
-    <div className="master-container">
-      <img src={avatar} alt="avatar-img" />
-  
-      <ul>
-          <li>User: {user}</li>
-          <li>Name: {userName}</li>
-          <li>GitHub: <a href={github} target="_blank">{github}</a></li>
-      </ul>
+    <div className='header'>
+        <div className="master-container">
+          <img src={avatar ? avatar : './user.png' } alt="avatar-img" />
       
-   
+          <ul>
+              <li>User: {user}</li>
+              <li>Name: {userName}</li>
+              <li>GitHub: <a href={github} target="_blank">{github}</a></li>
+        </ul>
+      </div>
+      <Search getUserData={getUserData}/>
     </div>
+
   );
 };
 
