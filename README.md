@@ -1,4 +1,4 @@
-# api-github
+# Api-Github
 
 ## Projeto feito em React vite e axios
 
