@@ -7,7 +7,7 @@ Consumo da API do Github para mostrar lista de repositórios dos usuários pelo 
 <hr>
 
 ## Gif do projeto
-<img src="src/assets/images/video-projeto.gif">
+<img src="public/gif.gif">
 
 ## Home Page
 <img src="public/home-page.jpeg" width="800px">
