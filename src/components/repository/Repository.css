@@ -22,8 +22,17 @@
 
 .repository a{
     color: #ff6600;
-    text-decoration: none;
     font-size: 1.5rem;
+}
+
+.repository h2:hover{
+    transform: translateX(20px);
+    transition: ease-in-out 200ms;
+}
+
+.repository h2:active{
+    transform: translateX(30px);
+    transition: ease-in-out 100ms;
 }
 
 .repository ul{
