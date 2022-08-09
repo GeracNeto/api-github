@@ -5,12 +5,6 @@
 
     width: 650px;
     height: 60px;
-
-    border-right: 3px outset;
-    border-left: 3px outset;
-    border-bottom: 3px outset;
-    border-color: #1c5052;
-    border-radius: 10px;
     padding: 5px;
 }
 
