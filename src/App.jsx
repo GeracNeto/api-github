@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react'
 import Header from './components/header/Header';
 import Search from './components/search/Search';
 import Repository from './components/repository/Repository';
+import Footer from './components/footer/Footer';
 
 function App() {
 
@@ -52,15 +53,15 @@ function App() {
 
   return (
     <div className="App">
-      <Header avatar={information.avatar_url} user={information.login} userName={information.name} github={information.html_url}/>
-      
-      <Search getUserData={getUserData}/>
+      <Header avatar={information.avatar_url} user={information.login} userName={information.name} github={information.html_url} getUserData={getUserData}/>
 
-      <dir className="repos">
+      <div className="repos">
         {repository.map(repo => (
           <Repository key={repo.id} repoName={repo.name} repoLink={repo.html_url} repoLanguages={repo.languages_url} repoObs={repo.description}/>
         ))}
-      </dir>
+      </div>
+
+      <Footer />
     </div>
   );
 };
