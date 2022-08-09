@@ -3,23 +3,29 @@
     justify-content:space-between;
     align-items: center;
 
-    width: 400px;
+    width: 650px;
     height: 60px;
-    margin-top: 50px;
+
+    border-right: 3px outset;
+    border-left: 3px outset;
+    border-bottom: 3px outset;
+    border-color: #1c5052;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 input{
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
 
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 
     border-radius: 10px;
 }
 
 .search img{
-    width: 65px;
+    width: 70px;
     cursor: pointer;
 }
 

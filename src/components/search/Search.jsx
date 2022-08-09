@@ -10,7 +10,7 @@ const Search = ({ getUserData }) => {
 
     return (
         <form className="search">
-            <input type="text" onChange={e => setUser(e.target.value)} required/>
+            <input type="text" onChange={e => setUser(e.target.value)} placeholder="User Name" />
             <img src="./pesquisar-usuario.png" alt="" onClick={() => getUserData(user)}/>
         </form>
   );
