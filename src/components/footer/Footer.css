@@ -1,0 +1,21 @@
+footer{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+footer p{
+    font-size: 1rem;
+}
+
+footer a{
+    display: flex;
+    padding: 10px;
+}
+
+footer img{
+    width: 40px;
+}
+
+
+
